@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content='Request an invitation to &quot;KITCHEN ISLAND&quot; // SUMMER SERVICE.'>
+    <title>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE | Request an Invitation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+      :root {
+        --bg: #f4ecdf;
+        --ink: #1f140f;
+        --muted: #675243;
+        --paper: rgba(255, 249, 242, 0.84);
+        --line: rgba(31, 20, 15, 0.12);
+        --gold: #b18348;
+        --gold-soft: rgba(177, 131, 72, 0.18);
+        --shadow: 0 24px 80px rgba(31, 20, 15, 0.13);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(177, 131, 72, 0.24), transparent 26%),
+          radial-gradient(circle at bottom right, rgba(31, 20, 15, 0.12), transparent 32%),
+          linear-gradient(135deg, #ead8c0 0%, #f6efe7 42%, #e8dbc9 100%);
+      }
+      .shell {
+        width: min(1180px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 28px 0 56px;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+        gap: 24px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 32px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+      .hero {
+        padding: 34px;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border: 1px solid rgba(31, 20, 15, 0.08);
+        border-radius: 24px;
+        pointer-events: none;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        font-size: 0.82rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      h1 {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3.2rem, 7vw, 5.8rem);
+        line-height: 0.92;
+        font-weight: 600;
+      }
+      .kicker {
+        margin: 14px 0 8px;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .celebration {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.45rem;
+        color: var(--ink);
+      }
+      .lede {
+        margin: 26px 0 0;
+        max-width: 40ch;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1rem;
+      }
+      .art-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .art-card, .info-card {
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.52);
+        overflow: hidden;
+      }
+      .art-card {
+        min-height: 360px;
+        position: relative;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22)),
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 34%),
+          linear-gradient(135deg, #77604f 0%, #3b2c24 45%, #1f140f 100%);
+      }
+      .art-card::before,
+      .art-card::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+      .art-card::after {
+        inset: auto 22px 22px 22px;
+        height: 120px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      }
+      .art-copy {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        bottom: 34px;
+        color: #f8f2eb;
+      }
+      .art-copy .label {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.18);
+        font-size: 0.74rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .art-copy h2 {
+        margin: 0 0 10px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 0.98;
+        font-weight: 600;
+      }
+      .art-copy p {
+        margin: 0;
+        max-width: 24ch;
+        line-height: 1.7;
+        color: rgba(248, 242, 235, 0.88);
+      }
+      .info-stack {
+        display: grid;
+        gap: 18px;
+      }
+      .info-card {
+        padding: 22px;
+      }
+      .info-card h3 {
+        margin: 0 0 14px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      .expect-list,
+      .price-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .price-list li,
+      .expect-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(31, 20, 15, 0.08);
+      }
+      .price-list li:last-child,
+      .expect-list li:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .price-list strong,
+      .expect-list strong {
+        color: var(--ink);
+      }
+      .note {
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .form-panel {
+        padding: 28px;
+        position: sticky;
+        top: 24px;
+      }
+      .form-panel h2 {
+        margin: 0 0 8px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.3rem;
+        font-weight: 600;
+      }
+      .form-panel p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      form {
+        display: grid;
+        gap: 14px;
+      }
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+      .field[data-visible="false"] {
+        display: none;
+      }
+      label {
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+      input, select, textarea, button {
+        font: inherit;
+      }
+      input, select, textarea {
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.92);
+        color: var(--ink);
+        padding: 14px 15px;
+      }
+      textarea {
+        min-height: 112px;
+        resize: vertical;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fffaf5;
+        padding: 16px 20px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      button:hover {
+        background: #36241a;
+      }
+      .fineprint, .form-status {
+        color: var(--muted);
+        font-size: 0.84rem;
+        line-height: 1.7;
+      }
+      .form-status {
+        min-height: 1.7em;
+      }
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .form-panel {
+          position: static;
+        }
+      }
+      @media (max-width: 720px) {
+        .shell {
+          width: min(100vw - 20px, 1180px);
+          padding: 18px 0 32px;
+        }
+        .hero, .form-panel {
+          padding: 22px;
+          border-radius: 26px;
+        }
+        .art-grid {
+          grid-template-columns: 1fr;
+        }
+        .art-card {
+          min-height: 300px;
+        }
+        .info-card h3,
+        .form-panel h2 {
+          font-size: 1.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="layout">
+        <article class="panel hero">
+          <p class="eyebrow">&quot;KITCHEN ISLAND&quot;</p>
+          <h1>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE</h1>
+          <div class="kicker">Friends &amp; Family Edition</div>
+          <p class="celebration">Celebrating two years of &quot;KITCHEN ISLAND&quot;.</p>
+          <p class="lede">Join us for an afternoon and evening of great music, good company and the next chapter of the &quot;KITCHEN ISLAND&quot; community.</p>
+
+          <div class="art-grid">
+            <section class="art-card" aria-label="Cover artwork placement">
+              <div class="art-copy">
+                <div class="label">Cover artwork</div>
+                <h2>&quot;KITCHEN ISLAND&quot;</h2>
+                <p>Review build using the locked event copy and layout structure for desktop and mobile approval.</p>
+              </div>
+            </section>
+
+            <div class="info-stack">
+              <section class="info-card">
+                <h3>What to expect</h3>
+                <ul class="expect-list">
+                  <li><strong>Music</strong><span>Curated DJ sets throughout the day</span></li>
+                  <li><strong>Timing</strong><span>Daytime into sunset</span></li>
+                  <li><strong>Atmosphere</strong><span>Invite-only atmosphere</span></li>
+                  <li><strong>House rule</strong><span>BYOB</span></li>
+                </ul>
+              </section>
+
+              <section class="info-card">
+                <h3>Reservations</h3>
+                <ul class="price-list">
+                  <li><strong>Community Reservation</strong><span>£8</span></li>
+                  <li><strong>Guest Reservation</strong><span>£12</span></li>
+                </ul>
+                <p class="note">Reservations are reviewed individually and are only confirmed once payment has been received.</p>
+                <p class="note">Please arrive before 6:00pm if possible to enjoy the full experience.</p>
+                <p class="note">This event will be filmed.</p>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel form-panel">
+          <h2>Request an Invitation</h2>
+          <p>Friends &amp; Family Edition for &quot;KITCHEN ISLAND&quot; // Summer Service.</p>
+          <form method="post" action="#" data-invitation-form>
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="instagram">Instagram handle</label>
+              <input id="instagram" name="instagram" required>
+            </div>
+            <div class="field">
+              <label for="communityStatus">Are you already a member of the &quot;KITCHEN ISLAND&quot; WhatsApp Community?</label>
+              <select id="communityStatus" name="communityStatus" data-community-status required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="field" data-visible="false">
+              <label for="invitedBy">If no, who invited you?</label>
+              <input id="invitedBy" name="invitedBy" data-invited-by>
+            </div>
+            <div class="field">
+              <label for="futureArtist">Who would you most like to see play at a future &quot;KITCHEN ISLAND&quot; event?</label>
+              <textarea id="futureArtist" name="futureArtist"></textarea>
+            </div>
+            <button type="submit">Request an Invitation</button>
+            <p class="fineprint">Reservations are reviewed individually. If approved, you'll receive an email with a payment link to confirm your place. Your reservation is not confirmed until payment has been received.</p>
+            <p class="form-status" data-form-status></p>
+          </form>
+        </aside>
+      </section>
+    </main>
+    
+    <script>
+      const apiBaseUrl = "http://localhost:3000";
+      const confirmationPath = "/request-received/";
+      const form = document.querySelector("[data-invitation-form]");
+      const communityField = document.querySelector("[data-community-status]");
+      const invitedByField = document.querySelector("[data-invited-by]");
+      const statusBox = document.querySelector("[data-form-status]");
+
+      const syncConditionalState = () => {
+        const needsInvite = communityField.value === "No";
+        invitedByField.required = needsInvite;
+        invitedByField.closest(".field").dataset.visible = needsInvite ? "true" : "false";
+      };
+
+      syncConditionalState();
+      communityField.addEventListener("change", syncConditionalState);
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!apiBaseUrl) {
+          statusBox.textContent = "Submissions are temporarily unavailable during review.";
+          return;
+        }
+        statusBox.textContent = "Submitting request...";
+
+        const formData = new FormData(form);
+        const payload = {
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          instagram: formData.get("instagram"),
+          communityStatus: formData.get("communityStatus"),
+          invitedBy: formData.get("invitedBy"),
+          futureArtist: formData.get("futureArtist")
+        };
+
+        try {
+          const response = await fetch(`${apiBaseUrl}/api/reservations/request`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || "Request failed");
+          }
+
+          const reservationId = data.reservation?.id || "";
+          window.location.href = `${confirmationPath}?reservationId=${encodeURIComponent(reservationId)}`;
+        } catch (error) {
+          statusBox.textContent = error.message || "Something went wrong. Please try again.";
+        }
+      });
+    </script>
+  
+  </body>
+</html>
