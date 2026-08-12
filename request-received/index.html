@@ -3,64 +3,178 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reservation Request Received</title>
+    <title>Reservation Received</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+      :root {
+        --bg: #f4ecdf;
+        --panel: rgba(255, 250, 244, 0.88);
+        --ink: #20130d;
+        --muted: #655142;
+        --line: rgba(32, 19, 13, 0.1);
+        --shadow: 0 28px 90px rgba(32, 19, 13, 0.14);
+      }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(188, 141, 84, 0.26), transparent 28%),
+          linear-gradient(135deg, #ead9c1 0%, #f7f1ea 44%, #e7d8c5 100%);
+      }
+      .confirmation {
+        min-height: 100vh;
         display: grid;
         place-items: center;
-        background:
-          radial-gradient(circle at top left, rgba(177, 131, 72, 0.24), transparent 28%),
-          linear-gradient(135deg, #ead8c0 0%, #f6efe7 45%, #e8dbc9 100%);
-        color: #1f140f;
-        font-family: "Manrope", sans-serif;
+        padding: 22px;
       }
       .card {
-        width: min(680px, calc(100vw - 28px));
-        padding: 34px;
-        border-radius: 30px;
-        border: 1px solid rgba(31, 20, 15, 0.12);
-        background: rgba(255, 249, 242, 0.86);
-        box-shadow: 0 24px 80px rgba(31, 20, 15, 0.12);
+        width: min(720px, 100%);
+        border-radius: 34px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        padding: 38px;
       }
-      .eyebrow {
-        margin: 0 0 10px;
+      .brand {
+        margin: 0 0 18px;
         font-size: 0.82rem;
-        letter-spacing: 0.26em;
+        letter-spacing: 0.28em;
         text-transform: uppercase;
-        color: #675243;
+        color: var(--muted);
       }
       h1 {
-        margin: 0 0 12px;
+        margin: 0 0 18px;
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2.6rem, 7vw, 4rem);
+        font-size: clamp(2.8rem, 7vw, 4.4rem);
         line-height: 0.95;
         font-weight: 600;
       }
-      p {
-        margin: 0 0 12px;
-        color: #675243;
-        line-height: 1.8;
+      .copy {
+        display: grid;
+        gap: 12px;
       }
-      strong {
-        color: #1f140f;
+      .copy p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
       }
-      a {
-        color: #1f140f;
+      button, a {
+        font: inherit;
+      }
+      .actions {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        background: #2c1a12;
+        color: #fffaf5;
+        padding: 16px 28px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .meta {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .fallback-link {
+        margin-top: 10px;
+        display: inline-block;
+        color: var(--muted);
       }
     </style>
   </head>
   <body>
-    <section class="card">
-      <p class="eyebrow">&quot;KITCHEN ISLAND&quot;</p>
-      <h1>Reservation Request Received</h1>
-      <p>Thank you for requesting an invitation to &quot;KITCHEN ISLAND&quot; // Summer Service.</p>
-      <p>Reservations are reviewed individually. If approved, you'll receive an email with a payment link to confirm your place.</p>
-      <p>Your reservation is not confirmed until payment has been received.</p>
-      <p><strong>Reservation ID:</strong> Preview</p>
-      <p><a href="/">Return to the invitation page</a></p>
-    </section>
+    <main class="confirmation">
+      <section class="card">
+        <p class="brand">&quot;KITCHEN ISLAND&quot;</p>
+        <h1>Reservation Received</h1>
+        <div class="copy">
+          <p>Thank you.</p><p>Your reservation has been submitted for review.</p><p>If approved, you'll receive an email containing your payment link.</p><p>Your reservation is only confirmed once payment has been received.</p>
+        </div>
+        <div class="actions">
+          <button type="button" data-close-confirmation>Close</button>
+        </div>
+        <p class="meta">Reservation ID: Preview</p>
+        <a class="fallback-link" href="/">Return to the reservation page</a>
+      </section>
+    </main>
+    
+    <script>
+      const apiBaseUrl = "";
+      const confirmationPath = "";
+      const form = document.querySelector("[data-invitation-form]");
+      const communityField = document.querySelector("[data-community-status]");
+      const invitedByField = document.querySelector("[data-invited-by]");
+      const statusBox = document.querySelector("[data-form-status]");
+
+      const syncConditionalState = () => {
+        const needsInvite = communityField.value === "No";
+        invitedByField.required = needsInvite;
+        invitedByField.closest(".field").dataset.visible = needsInvite ? "true" : "false";
+      };
+
+      syncConditionalState();
+      communityField.addEventListener("change", syncConditionalState);
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!apiBaseUrl) {
+          statusBox.textContent = "Submissions are temporarily unavailable during review.";
+          return;
+        }
+
+        statusBox.textContent = "Submitting...";
+
+        const formData = new FormData(form);
+        const payload = {
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          instagram: formData.get("instagram"),
+          communityStatus: formData.get("communityStatus"),
+          invitedBy: formData.get("invitedBy"),
+          futureArtist: formData.get("futureArtist")
+        };
+
+        try {
+          const response = await fetch(`${apiBaseUrl}/api/reservations/request`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || "Request failed");
+          }
+
+          const reservationId = data.reservation?.id || "";
+          window.location.href = `${confirmationPath}?reservationId=${encodeURIComponent(reservationId)}`;
+        } catch (error) {
+          statusBox.textContent = error.message || "Something went wrong. Please try again.";
+        }
+      });
+
+      const closeButton = document.querySelector("[data-close-confirmation]");
+      if (closeButton) {
+        closeButton.addEventListener("click", () => {
+          if (window.history.length > 1) {
+            window.history.back();
+            return;
+          }
+          window.close();
+        });
+      }
+    </script>
+  
   </body>
 </html>

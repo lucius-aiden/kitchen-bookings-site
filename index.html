@@ -3,300 +3,422 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content='Request an invitation to &quot;KITCHEN ISLAND&quot; // SUMMER SERVICE.'>
-    <title>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE | Request an Invitation</title>
+    <meta name="description" content='Reserve your place for &quot;KITCHEN ISLAND&quot; SUMMER SERVICE.'>
+    <title>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
       :root {
         --bg: #f4ecdf;
-        --ink: #1f140f;
-        --muted: #675243;
-        --paper: rgba(255, 249, 242, 0.84);
-        --line: rgba(31, 20, 15, 0.12);
-        --gold: #b18348;
-        --gold-soft: rgba(177, 131, 72, 0.18);
-        --shadow: 0 24px 80px rgba(31, 20, 15, 0.13);
+        --panel: rgba(255, 250, 244, 0.86);
+        --ink: #20130d;
+        --muted: #655142;
+        --line: rgba(32, 19, 13, 0.1);
+        --accent: #bc8d54;
+        --shadow: 0 28px 90px rgba(32, 19, 13, 0.14);
+        --radius: 34px;
       }
+
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+
       body {
         margin: 0;
         min-height: 100vh;
         color: var(--ink);
         font-family: "Manrope", sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(177, 131, 72, 0.24), transparent 26%),
-          radial-gradient(circle at bottom right, rgba(31, 20, 15, 0.12), transparent 32%),
-          linear-gradient(135deg, #ead8c0 0%, #f6efe7 42%, #e8dbc9 100%);
+          radial-gradient(circle at top left, rgba(188, 141, 84, 0.26), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(32, 19, 13, 0.12), transparent 34%),
+          linear-gradient(135deg, #ead9c1 0%, #f7f1ea 44%, #e7d8c5 100%);
       }
+
       .shell {
-        width: min(1180px, calc(100vw - 32px));
+        width: min(1180px, calc(100vw - 28px));
         margin: 0 auto;
-        padding: 28px 0 56px;
+        padding: 28px 0 52px;
       }
+
       .layout {
         display: grid;
-        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-        gap: 24px;
+        grid-template-columns: minmax(0, 1.16fr) minmax(360px, 0.84fr);
+        gap: 22px;
         align-items: start;
       }
+
       .panel {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 32px;
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(18px);
-      }
-      .hero {
-        padding: 34px;
-        overflow: hidden;
         position: relative;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
       }
-      .hero::after {
+
+      .panel::after {
         content: "";
         position: absolute;
         inset: 18px;
-        border: 1px solid rgba(31, 20, 15, 0.08);
-        border-radius: 24px;
+        border: 1px solid rgba(32, 19, 13, 0.07);
+        border-radius: calc(var(--radius) - 10px);
         pointer-events: none;
       }
-      .eyebrow {
-        margin: 0 0 12px;
-        font-size: 0.82rem;
+
+      .story {
+        padding: 34px;
+      }
+
+      .brand-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+      }
+
+      .brand-row p {
+        margin: 0;
+      }
+
+      .brand {
         letter-spacing: 0.28em;
         text-transform: uppercase;
+        font-size: 0.82rem;
         color: var(--muted);
       }
+
+      .est {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
       h1 {
-        margin: 0;
+        margin: 28px 0 0;
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(3.2rem, 7vw, 5.8rem);
+        font-size: clamp(3.2rem, 7vw, 5.9rem);
         line-height: 0.92;
         font-weight: 600;
+        letter-spacing: -0.03em;
       }
-      .kicker {
-        margin: 14px 0 8px;
-        font-size: 1rem;
-        letter-spacing: 0.08em;
+
+      .subtitle {
+        margin: 16px 0 0;
+        color: var(--accent);
         text-transform: uppercase;
-        color: var(--gold);
+        letter-spacing: 0.08em;
         font-weight: 700;
-      }
-      .celebration {
-        margin: 0;
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.45rem;
-        color: var(--ink);
-      }
-      .lede {
-        margin: 26px 0 0;
-        max-width: 40ch;
-        color: var(--muted);
-        line-height: 1.85;
         font-size: 1rem;
       }
-      .art-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 18px;
-        margin-top: 28px;
+
+      .intro {
+        margin: 16px 0 0;
+        max-width: 38ch;
+        color: var(--muted);
+        line-height: 1.9;
+        font-size: 1.02rem;
       }
-      .art-card, .info-card {
-        border-radius: 24px;
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(250px, 0.92fr);
+        gap: 18px;
+        margin-top: 30px;
+      }
+
+      .campaign-panel,
+      .info-card {
+        border-radius: 26px;
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.52);
         overflow: hidden;
       }
-      .art-card {
-        min-height: 360px;
-        position: relative;
-        background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22)),
-          radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 34%),
-          linear-gradient(135deg, #77604f 0%, #3b2c24 45%, #1f140f 100%);
+
+      .campaign-panel {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 620px;
       }
-      .art-card::before,
-      .art-card::after {
-        content: "";
-        position: absolute;
-        inset: 18px;
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.18);
+
+      .campaign-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 18px 18px 0;
       }
-      .art-card::after {
-        inset: auto 22px 22px 22px;
-        height: 120px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-      }
-      .art-copy {
-        position: absolute;
-        left: 28px;
-        right: 28px;
-        bottom: 34px;
-        color: #f8f2eb;
-      }
-      .art-copy .label {
-        display: inline-block;
-        margin-bottom: 10px;
-        padding: 7px 12px;
+
+      .campaign-nav span {
+        padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255,255,255,0.12);
         border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.88);
         font-size: 0.74rem;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
       }
-      .art-copy h2 {
-        margin: 0 0 10px;
+
+      .campaign-frame {
+        margin: 18px;
+        border-radius: 22px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+          radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 34%),
+          linear-gradient(135deg, #806d5f 0%, #433127 48%, #211510 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .campaign-frame::before {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .campaign-copy {
+        position: absolute;
+        left: 26px;
+        right: 26px;
+        bottom: 26px;
+        color: #f8f0e7;
+      }
+
+      .campaign-copy p {
+        margin: 0;
+      }
+
+      .campaign-kicker {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        font-size: 0.74rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .campaign-title {
         font-family: "Cormorant Garamond", serif;
         font-size: clamp(2rem, 4vw, 3rem);
         line-height: 0.98;
-        font-weight: 600;
+        max-width: 7ch;
       }
-      .art-copy p {
-        margin: 0;
+
+      .campaign-note {
+        margin-top: 14px;
         max-width: 24ch;
-        line-height: 1.7;
-        color: rgba(248, 242, 235, 0.88);
+        line-height: 1.75;
+        color: rgba(248, 240, 231, 0.84);
       }
+
       .info-stack {
         display: grid;
         gap: 18px;
       }
+
       .info-card {
         padding: 22px;
       }
-      .info-card h3 {
+
+      .info-card h2 {
         margin: 0 0 14px;
         font-family: "Cormorant Garamond", serif;
         font-size: 2rem;
         font-weight: 600;
       }
-      .expect-list,
+
+      .spec-list,
       .price-list {
+        display: grid;
+        gap: 10px;
         margin: 0;
         padding: 0;
         list-style: none;
+      }
+
+      .spec-list li,
+      .price-list li {
         display: grid;
-        gap: 10px;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-      .price-list li,
-      .expect-list li {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: start;
         padding-bottom: 10px;
-        border-bottom: 1px solid rgba(31, 20, 15, 0.08);
+        border-bottom: 1px solid rgba(32, 19, 13, 0.08);
       }
-      .price-list li:last-child,
-      .expect-list li:last-child {
-        border-bottom: 0;
+
+      .price-list li {
+        grid-template-columns: 1fr auto;
+      }
+
+      .spec-list li:last-child,
+      .price-list li:last-child {
         padding-bottom: 0;
+        border-bottom: 0;
       }
-      .price-list strong,
-      .expect-list strong {
+
+      .spec-label,
+      .price-label {
         color: var(--ink);
+        font-weight: 700;
       }
-      .note {
-        margin-top: 14px;
+
+      .spec-value,
+      .price-value,
+      .reservation-note {
         color: var(--muted);
-        line-height: 1.7;
+        line-height: 1.75;
       }
+
+      .reservation-note {
+        margin: 16px 0 0;
+      }
+
       .form-panel {
-        padding: 28px;
+        padding: 30px;
         position: sticky;
         top: 24px;
       }
+
       .form-panel h2 {
-        margin: 0 0 8px;
+        margin: 0 0 20px;
         font-family: "Cormorant Garamond", serif;
-        font-size: 2.3rem;
+        font-size: 2.5rem;
         font-weight: 600;
       }
-      .form-panel p {
-        margin: 0 0 20px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
+
       form {
         display: grid;
-        gap: 14px;
+        gap: 16px;
       }
+
       .field {
         display: grid;
         gap: 8px;
       }
+
       .field[data-visible="false"] {
         display: none;
       }
+
       label {
-        font-size: 0.88rem;
         color: var(--muted);
+        font-size: 0.88rem;
       }
+
       input, select, textarea, button {
         font: inherit;
       }
+
       input, select, textarea {
         width: 100%;
+        padding: 15px 16px;
         border-radius: 18px;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(32, 19, 13, 0.12);
         background: rgba(255,255,255,0.92);
         color: var(--ink);
-        padding: 14px 15px;
       }
+
       textarea {
-        min-height: 112px;
+        min-height: 124px;
         resize: vertical;
       }
+
       button {
         border: 0;
         border-radius: 999px;
-        background: var(--ink);
+        background: #2c1a12;
         color: #fffaf5;
-        padding: 16px 20px;
-        cursor: pointer;
+        padding: 17px 22px;
         font-weight: 700;
+        cursor: pointer;
       }
+
       button:hover {
-        background: #36241a;
+        background: #392118;
       }
-      .fineprint, .form-status {
+
+      .form-status {
+        min-height: 1.6em;
+        margin: 0;
         color: var(--muted);
         font-size: 0.84rem;
-        line-height: 1.7;
       }
-      .form-status {
-        min-height: 1.7em;
+
+      .confirmation {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 28px 14px;
       }
+
+      .confirmation-card {
+        width: min(720px, 100%);
+        padding: 38px;
+      }
+
+      .confirmation-card h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.8rem, 7vw, 4.3rem);
+      }
+
+      .confirmation-copy {
+        display: grid;
+        gap: 12px;
+        margin: 0 0 26px;
+      }
+
+      .confirmation-copy p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .confirmation-actions {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .confirmation-meta {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
       @media (max-width: 980px) {
         .layout {
           grid-template-columns: 1fr;
         }
+
         .form-panel {
           position: static;
         }
       }
+
       @media (max-width: 720px) {
         .shell {
-          width: min(100vw - 20px, 1180px);
+          width: min(100vw - 18px, 1180px);
           padding: 18px 0 32px;
         }
-        .hero, .form-panel {
-          padding: 22px;
-          border-radius: 26px;
+
+        .story,
+        .form-panel,
+        .confirmation-card {
+          padding: 24px;
         }
-        .art-grid {
+
+        .content-grid {
           grid-template-columns: 1fr;
         }
-        .art-card {
-          min-height: 300px;
+
+        .campaign-panel {
+          min-height: 420px;
         }
-        .info-card h3,
-        .form-panel h2 {
-          font-size: 1.9rem;
+
+        .campaign-title {
+          max-width: 10ch;
         }
       }
     </style>
@@ -304,80 +426,95 @@
   <body>
     <main class="shell">
       <section class="layout">
-        <article class="panel hero">
-          <p class="eyebrow">&quot;KITCHEN ISLAND&quot;</p>
-          <h1>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE</h1>
-          <div class="kicker">Friends &amp; Family Edition</div>
-          <p class="celebration">Celebrating two years of &quot;KITCHEN ISLAND&quot;.</p>
-          <p class="lede">Join us for an afternoon and evening of great music, good company and the next chapter of the &quot;KITCHEN ISLAND&quot; community.</p>
+        <article class="panel story">
+          <div class="brand-row">
+            <p class="brand">&quot;KITCHEN ISLAND&quot;</p>
+            <p class="est">Est. 2024</p>
+          </div>
 
-          <div class="art-grid">
-            <section class="art-card" aria-label="Cover artwork placement">
-              <div class="art-copy">
-                <div class="label">Cover artwork</div>
-                <h2>&quot;KITCHEN ISLAND&quot;</h2>
-                <p>Review build using the locked event copy and layout structure for desktop and mobile approval.</p>
+          <h1>SUMMER SERVICE</h1>
+          <p class="subtitle">Friends &amp; Family Edition</p>
+          <p class="intro">Join us as we celebrate two years of &quot;KITCHEN ISLAND&quot; with an afternoon of exceptional music, thoughtful hospitality and the community that built it.</p>
+
+          <div class="content-grid">
+            <section class="campaign-panel" aria-label="Campaign panel">
+              <div class="campaign-nav">
+                <span>Cover Artwork</span>
+                <span>Menu Page 1</span>
+                <span>Menu Page 2</span>
+                <span>Photography</span>
+                <span>Video Still</span>
+              </div>
+              <div class="campaign-frame">
+                <div class="campaign-copy">
+                  <p class="campaign-kicker">Campaign Panel</p>
+                  <p class="campaign-title">SUMMER SERVICE</p>
+                  <p class="campaign-note">Reusable event canvas for cover artwork, menus, photography and future campaign drops.</p>
+                </div>
               </div>
             </section>
 
             <div class="info-stack">
               <section class="info-card">
-                <h3>What to expect</h3>
-                <ul class="expect-list">
-                  <li><strong>Music</strong><span>Curated DJ sets throughout the day</span></li>
-                  <li><strong>Timing</strong><span>Daytime into sunset</span></li>
-                  <li><strong>Atmosphere</strong><span>Invite-only atmosphere</span></li>
-                  <li><strong>House rule</strong><span>BYOB</span></li>
+                <h2>What to Expect</h2>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Music</span><span class="spec-value">Curated DJ Sets</span></li>
+                  <li><span class="spec-label">Time</span><span class="spec-value">4PM — Sunset</span></li>
+                  <li><span class="spec-label">Dress</span><span class="spec-value">BLANC</span></li>
+                  <li><span class="spec-label">Bar</span><span class="spec-value">BYOB</span></li>
                 </ul>
               </section>
 
               <section class="info-card">
-                <h3>Reservations</h3>
+                <h2>Reservations</h2>
                 <ul class="price-list">
-                  <li><strong>Community Reservation</strong><span>£8</span></li>
-                  <li><strong>Guest Reservation</strong><span>£12</span></li>
+                  <li><span class="price-label">Community — £8</span></li>
+                  <li><span class="price-label">Guest — £12</span></li>
                 </ul>
-                <p class="note">Reservations are reviewed individually and are only confirmed once payment has been received.</p>
-                <p class="note">Please arrive before 6:00pm if possible to enjoy the full experience.</p>
-                <p class="note">This event will be filmed.</p>
+                <p class="reservation-note">Reservations are reviewed individually.</p>
+                <p class="reservation-note">Your reservation is confirmed once payment has been received.</p>
               </section>
             </div>
           </div>
         </article>
 
         <aside class="panel form-panel">
-          <h2>Request an Invitation</h2>
-          <p>Friends &amp; Family Edition for &quot;KITCHEN ISLAND&quot; // Summer Service.</p>
+          <h2>Reserve Your Place</h2>
           <form method="post" action="#" data-invitation-form>
             <div class="field">
-              <label for="fullName">Full name</label>
+              <label for="fullName">Full Name</label>
               <input id="fullName" name="fullName" autocomplete="name" required>
             </div>
+
             <div class="field">
               <label for="email">Email</label>
               <input id="email" name="email" type="email" autocomplete="email" required>
             </div>
+
             <div class="field">
-              <label for="instagram">Instagram handle</label>
+              <label for="instagram">Instagram</label>
               <input id="instagram" name="instagram" required>
             </div>
+
             <div class="field">
-              <label for="communityStatus">Are you already a member of the &quot;KITCHEN ISLAND&quot; WhatsApp Community?</label>
+              <label for="communityStatus">Community Member?</label>
               <select id="communityStatus" name="communityStatus" data-community-status required>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
               </select>
             </div>
+
             <div class="field" data-visible="false">
-              <label for="invitedBy">If no, who invited you?</label>
+              <label for="invitedBy">If no, invited by?</label>
               <input id="invitedBy" name="invitedBy" data-invited-by>
             </div>
+
             <div class="field">
-              <label for="futureArtist">Who would you most like to see play at a future &quot;KITCHEN ISLAND&quot; event?</label>
+              <label for="futureArtist">Future artist suggestion</label>
               <textarea id="futureArtist" name="futureArtist"></textarea>
             </div>
+
             <button type="submit">Request an Invitation</button>
-            <p class="fineprint">Reservations are reviewed individually. If approved, you'll receive an email with a payment link to confirm your place. Your reservation is not confirmed until payment has been received.</p>
             <p class="form-status" data-form-status></p>
           </form>
         </aside>
@@ -407,7 +544,8 @@
           statusBox.textContent = "Submissions are temporarily unavailable during review.";
           return;
         }
-        statusBox.textContent = "Submitting request...";
+
+        statusBox.textContent = "Submitting...";
 
         const formData = new FormData(form);
         const payload = {
@@ -439,6 +577,17 @@
           statusBox.textContent = error.message || "Something went wrong. Please try again.";
         }
       });
+
+      const closeButton = document.querySelector("[data-close-confirmation]");
+      if (closeButton) {
+        closeButton.addEventListener("click", () => {
+          if (window.history.length > 1) {
+            window.history.back();
+            return;
+          }
+          window.close();
+        });
+      }
     </script>
   
   </body>
