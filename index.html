@@ -3,23 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content='Reserve your place for &quot;KITCHEN ISLAND&quot; SUMMER SERVICE.'>
+    <meta name="description" content='Request an invitation to &quot;KITCHEN ISLAND&quot; SUMMER SERVICE.'>
     <title>&quot;KITCHEN ISLAND&quot; // SUMMER SERVICE</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
 
       :root {
-        --bg: #f4ecdf;
-        --panel: rgba(255, 250, 244, 0.86);
-        --ink: #20130d;
-        --muted: #655142;
-        --line: rgba(32, 19, 13, 0.1);
-        --accent: #bc8d54;
-        --shadow: 0 28px 90px rgba(32, 19, 13, 0.14);
+        --bg: #f3ebdf;
+        --panel: rgba(255, 249, 243, 0.86);
+        --panel-strong: rgba(255, 252, 247, 0.92);
+        --ink: #1f1510;
+        --muted: #695446;
+        --line: rgba(31, 21, 16, 0.1);
+        --line-strong: rgba(31, 21, 16, 0.16);
+        --accent: #b58856;
+        --accent-soft: rgba(181, 136, 86, 0.16);
+        --shadow: 0 30px 100px rgba(31, 21, 16, 0.13);
         --radius: 34px;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
@@ -27,20 +32,24 @@
         color: var(--ink);
         font-family: "Manrope", sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(188, 141, 84, 0.26), transparent 28%),
-          radial-gradient(circle at bottom right, rgba(32, 19, 13, 0.12), transparent 34%),
-          linear-gradient(135deg, #ead9c1 0%, #f7f1ea 44%, #e7d8c5 100%);
+          radial-gradient(circle at top left, rgba(181, 136, 86, 0.22), transparent 26%),
+          radial-gradient(circle at bottom right, rgba(31, 21, 16, 0.09), transparent 30%),
+          linear-gradient(135deg, #ebdcc8 0%, #f8f1e7 42%, #e9ddd0 100%);
+      }
+
+      body[data-modal-open="true"] {
+        overflow: hidden;
       }
 
       .shell {
-        width: min(1180px, calc(100vw - 28px));
+        width: min(1220px, calc(100vw - 28px));
         margin: 0 auto;
-        padding: 28px 0 52px;
+        padding: 28px 0 48px;
       }
 
       .layout {
         display: grid;
-        grid-template-columns: minmax(0, 1.16fr) minmax(360px, 0.84fr);
+        grid-template-columns: minmax(0, 1.2fr) minmax(380px, 0.8fr);
         gap: 22px;
         align-items: start;
       }
@@ -58,19 +67,19 @@
         content: "";
         position: absolute;
         inset: 18px;
-        border: 1px solid rgba(32, 19, 13, 0.07);
+        border: 1px solid rgba(31, 21, 16, 0.07);
         border-radius: calc(var(--radius) - 10px);
         pointer-events: none;
       }
 
       .story {
-        padding: 34px;
+        padding: 36px;
       }
 
       .brand-row {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: flex-start;
         gap: 16px;
       }
 
@@ -78,161 +87,234 @@
         margin: 0;
       }
 
-      .brand {
-        letter-spacing: 0.28em;
+      .brand-mark {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 4vw, 2.35rem);
+        font-weight: 600;
+        line-height: 0.95;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        font-size: 0.82rem;
-        color: var(--muted);
       }
 
       .est {
-        font-size: 0.82rem;
+        padding-top: 10px;
         color: var(--muted);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
       }
 
       h1 {
-        margin: 28px 0 0;
+        margin: 42px 0 0;
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(3.2rem, 7vw, 5.9rem);
-        line-height: 0.92;
+        font-size: clamp(3.45rem, 7vw, 6rem);
+        line-height: 0.9;
         font-weight: 600;
         letter-spacing: -0.03em;
       }
 
       .subtitle {
-        margin: 16px 0 0;
+        margin: 14px 0 0;
         color: var(--accent);
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 0.94rem;
       }
 
       .intro {
-        margin: 16px 0 0;
-        max-width: 38ch;
+        margin: 22px 0 0;
+        max-width: 36ch;
         color: var(--muted);
-        line-height: 1.9;
+        line-height: 1.95;
         font-size: 1.02rem;
       }
 
       .content-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.08fr) minmax(250px, 0.92fr);
-        gap: 18px;
-        margin-top: 30px;
+        grid-template-columns: minmax(0, 1.12fr) minmax(250px, 0.88fr);
+        gap: 20px;
+        margin-top: 36px;
       }
 
       .campaign-panel,
       .info-card {
-        border-radius: 26px;
+        border-radius: 28px;
         border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.52);
+        background: rgba(255, 255, 255, 0.5);
         overflow: hidden;
       }
 
       .campaign-panel {
         display: grid;
-        grid-template-rows: auto 1fr;
-        min-height: 620px;
+        grid-template-rows: auto auto;
       }
 
-      .campaign-nav {
+      .campaign-header {
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 18px 18px 0;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 22px 0;
       }
 
-      .campaign-nav span {
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.18);
-        background: rgba(255,255,255,0.08);
-        color: rgba(255,255,255,0.88);
-        font-size: 0.74rem;
+      .campaign-header p {
+        margin: 0;
+      }
+
+      .campaign-kicker,
+      .campaign-caption {
+        color: var(--muted);
         letter-spacing: 0.14em;
         text-transform: uppercase;
+        font-size: 0.72rem;
       }
 
-      .campaign-frame {
+      .campaign-stage {
         margin: 18px;
-        border-radius: 22px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
         background:
-          linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
-          radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 34%),
-          linear-gradient(135deg, #806d5f 0%, #433127 48%, #211510 100%);
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 30%),
+          linear-gradient(140deg, #836f60 0%, #49362b 45%, #211712 100%);
+        min-height: 470px;
         position: relative;
         overflow: hidden;
       }
 
-      .campaign-frame::before {
+      .campaign-stage::before {
         content: "";
         position: absolute;
-        inset: 20px;
+        inset: 22px;
         border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .campaign-stage::after {
+        content: "";
+        position: absolute;
+        inset: auto -50px 48px auto;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 68%);
       }
 
       .campaign-copy {
         position: absolute;
-        left: 26px;
-        right: 26px;
-        bottom: 26px;
-        color: #f8f0e7;
+        left: 28px;
+        bottom: 28px;
+        max-width: 24ch;
+        color: #f7eee5;
       }
 
       .campaign-copy p {
         margin: 0;
       }
 
-      .campaign-kicker {
-        display: inline-block;
-        margin-bottom: 12px;
-        padding: 7px 12px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.12);
+      .campaign-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.1rem, 4vw, 3.25rem);
+        line-height: 0.96;
+      }
+
+      .campaign-note {
+        margin-top: 14px;
+        color: rgba(247, 238, 229, 0.82);
+        line-height: 1.75;
+      }
+
+      .campaign-assets {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        display: grid;
+        gap: 10px;
+        width: min(220px, 40%);
+      }
+
+      .campaign-asset {
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px 16px;
+        backdrop-filter: blur(10px);
+      }
+
+      .campaign-asset strong,
+      .campaign-asset span {
+        display: block;
+      }
+
+      .campaign-asset strong {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 244, 235, 0.9);
+      }
+
+      .campaign-asset span {
+        margin-top: 8px;
+        color: rgba(255, 244, 235, 0.7);
+        line-height: 1.55;
+        font-size: 0.86rem;
+      }
+
+      .campaign-rail {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        padding: 0 18px 18px;
+      }
+
+      .campaign-card {
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0.22));
+        padding: 16px;
+        min-height: 120px;
+        display: grid;
+        align-content: end;
+      }
+
+      .campaign-card strong,
+      .campaign-card span {
+        display: block;
+      }
+
+      .campaign-card strong {
         font-size: 0.74rem;
         letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
-      .campaign-title {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 0.98;
-        max-width: 7ch;
-      }
-
-      .campaign-note {
-        margin-top: 14px;
-        max-width: 24ch;
-        line-height: 1.75;
-        color: rgba(248, 240, 231, 0.84);
+      .campaign-card span {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 0.88rem;
       }
 
       .info-stack {
         display: grid;
-        gap: 18px;
+        gap: 20px;
       }
 
       .info-card {
-        padding: 22px;
+        padding: 24px;
       }
 
       .info-card h2 {
-        margin: 0 0 14px;
-        font-family: "Cormorant Garamond", serif;
-        font-size: 2rem;
-        font-weight: 600;
+        margin: 0 0 12px;
+        color: var(--muted);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.74rem;
       }
 
       .spec-list,
       .price-list {
         display: grid;
-        gap: 10px;
+        gap: 12px;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -241,15 +323,19 @@
       .spec-list li,
       .price-list li {
         display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 14px;
-        align-items: start;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(32, 19, 13, 0.08);
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(31, 21, 16, 0.08);
+      }
+
+      .spec-list li {
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 18px;
+        align-items: baseline;
       }
 
       .price-list li {
         grid-template-columns: 1fr auto;
+        gap: 14px;
       }
 
       .spec-list li:last-child,
@@ -260,31 +346,45 @@
 
       .spec-label,
       .price-label {
-        color: var(--ink);
-        font-weight: 700;
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
       }
 
       .spec-value,
-      .price-value,
-      .reservation-note {
-        color: var(--muted);
-        line-height: 1.75;
+      .price-value {
+        color: var(--ink);
+      }
+
+      .spec-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.55rem;
+        line-height: 1;
+      }
+
+      .price-label,
+      .price-value {
+        font-size: 1rem;
+        font-weight: 600;
       }
 
       .reservation-note {
-        margin: 16px 0 0;
+        margin: 18px 0 0;
+        color: var(--muted);
+        line-height: 1.85;
       }
 
       .form-panel {
-        padding: 30px;
+        padding: 32px;
         position: sticky;
         top: 24px;
       }
 
       .form-panel h2 {
-        margin: 0 0 20px;
+        margin: 0 0 24px;
         font-family: "Cormorant Garamond", serif;
-        font-size: 2.5rem;
+        font-size: 2.6rem;
         font-weight: 600;
       }
 
@@ -304,19 +404,25 @@
 
       label {
         color: var(--muted);
-        font-size: 0.88rem;
+        font-size: 0.84rem;
+        letter-spacing: 0.03em;
       }
 
-      input, select, textarea, button {
+      input,
+      select,
+      textarea,
+      button {
         font: inherit;
       }
 
-      input, select, textarea {
+      input,
+      select,
+      textarea {
         width: 100%;
         padding: 15px 16px;
         border-radius: 18px;
-        border: 1px solid rgba(32, 19, 13, 0.12);
-        background: rgba(255,255,255,0.92);
+        border: 1px solid rgba(31, 21, 16, 0.12);
+        background: rgba(255, 255, 255, 0.94);
         color: var(--ink);
       }
 
@@ -328,22 +434,29 @@
       button {
         border: 0;
         border-radius: 999px;
-        background: #2c1a12;
-        color: #fffaf5;
+        background: #281812;
+        color: #fff9f4;
         padding: 17px 22px;
         font-weight: 700;
         cursor: pointer;
       }
 
       button:hover {
-        background: #392118;
+        background: #342019;
       }
 
       .form-status {
-        min-height: 1.6em;
         margin: 0;
+        min-height: 0;
         color: var(--muted);
         font-size: 0.84rem;
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+
+      .form-status[data-visible="true"] {
+        min-height: 1.6em;
+        opacity: 1;
       }
 
       .confirmation {
@@ -355,7 +468,7 @@
 
       .confirmation-card {
         width: min(720px, 100%);
-        padding: 38px;
+        padding: 40px;
       }
 
       .confirmation-card h1 {
@@ -387,6 +500,60 @@
         font-size: 0.9rem;
       }
 
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background: rgba(20, 14, 10, 0.34);
+        backdrop-filter: blur(10px);
+        z-index: 30;
+      }
+
+      .modal[hidden] {
+        display: none;
+      }
+
+      .modal-card {
+        width: min(580px, 100%);
+        padding: 34px;
+        border-radius: 28px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        box-shadow: var(--shadow);
+      }
+
+      .modal-card h3 {
+        margin: 0 0 16px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.4rem, 6vw, 3.2rem);
+        font-weight: 600;
+      }
+
+      .modal-copy {
+        display: grid;
+        gap: 12px;
+      }
+
+      .modal-copy p,
+      .modal-copy span {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .modal-copy span {
+        display: block;
+        padding-top: 4px;
+        font-size: 0.84rem;
+        letter-spacing: 0.05em;
+      }
+
+      .modal-actions {
+        margin-top: 24px;
+      }
+
       @media (max-width: 980px) {
         .layout {
           grid-template-columns: 1fr;
@@ -397,70 +564,132 @@
         }
       }
 
-      @media (max-width: 720px) {
-        .shell {
-          width: min(100vw - 18px, 1180px);
-          padding: 18px 0 32px;
-        }
-
-        .story,
-        .form-panel,
-        .confirmation-card {
-          padding: 24px;
-        }
-
+      @media (max-width: 780px) {
         .content-grid {
           grid-template-columns: 1fr;
         }
 
-        .campaign-panel {
+        .campaign-assets {
+          position: static;
+          width: auto;
+          padding: 22px 22px 0;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .campaign-copy {
+          right: 28px;
+        }
+
+        .campaign-rail {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          width: min(100vw - 18px, 1220px);
+          padding: 18px 0 28px;
+        }
+
+        .story,
+        .form-panel,
+        .confirmation-card,
+        .modal-card {
+          padding: 24px;
+        }
+
+        .brand-row {
+          align-items: baseline;
+        }
+
+        .campaign-stage {
           min-height: 420px;
         }
 
-        .campaign-title {
-          max-width: 10ch;
+        .campaign-assets,
+        .campaign-rail {
+          grid-template-columns: 1fr;
+        }
+
+        .spec-list li {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .spec-value {
+          font-size: 1.35rem;
         }
       }
     </style>
   </head>
   <body>
     <main class="shell">
-      <section class="layout">
-        <article class="panel story">
+      <div class="layout">
+        <section class="panel story">
           <div class="brand-row">
-            <p class="brand">&quot;KITCHEN ISLAND&quot;</p>
+            <p class="brand-mark">&quot;KITCHEN ISLAND&quot;</p>
             <p class="est">Est. 2024</p>
           </div>
-
           <h1>SUMMER SERVICE</h1>
           <p class="subtitle">Friends &amp; Family Edition</p>
           <p class="intro">Join us as we celebrate two years of &quot;KITCHEN ISLAND&quot; with an afternoon of exceptional music, thoughtful hospitality and the community that built it.</p>
 
           <div class="content-grid">
-            <section class="campaign-panel" aria-label="Campaign panel">
-              <div class="campaign-nav">
-                <span>Cover Artwork</span>
-                <span>Menu Page 1</span>
-                <span>Menu Page 2</span>
-                <span>Photography</span>
-                <span>Video Still</span>
+            <section class="campaign-panel" aria-label="Campaign showcase">
+              <div class="campaign-header">
+                <p class="campaign-kicker">Campaign Showcase</p>
+                <p class="campaign-caption">Built for cover art, menus and future campaign assets</p>
               </div>
-              <div class="campaign-frame">
-                <div class="campaign-copy">
-                  <p class="campaign-kicker">Campaign Panel</p>
-                  <p class="campaign-title">SUMMER SERVICE</p>
-                  <p class="campaign-note">Reusable event canvas for cover artwork, menus, photography and future campaign drops.</p>
+              <div class="campaign-stage">
+                <div class="campaign-assets">
+                  <div class="campaign-asset">
+                    <strong>Event Cover</strong>
+                    <span>Primary event artwork and campaign stills.</span>
+                  </div>
+                  <div class="campaign-asset">
+                    <strong>Menu Page I</strong>
+                    <span>Food, drinks and hospitality details.</span>
+                  </div>
+                  <div class="campaign-asset">
+                    <strong>Menu Page II</strong>
+                    <span>Secondary menu, notes or future inserts.</span>
+                  </div>
+                  <div class="campaign-asset">
+                    <strong>Photography</strong>
+                    <span>Editorial imagery and event atmosphere.</span>
+                  </div>
                 </div>
+                <div class="campaign-copy">
+                  <p class="campaign-title">SUMMER SERVICE</p>
+                  <p class="campaign-note">A reusable showcase frame for each future &quot;KITCHEN ISLAND&quot; campaign.</p>
+                </div>
+              </div>
+              <div class="campaign-rail">
+                <article class="campaign-card">
+                  <strong>Event Cover</strong>
+                  <span>Hero artwork and primary event identity.</span>
+                </article>
+                <article class="campaign-card">
+                  <strong>Menu Page I</strong>
+                  <span>Course, drinks or service presentation.</span>
+                </article>
+                <article class="campaign-card">
+                  <strong>Menu Page II</strong>
+                  <span>Additional menu, timings or editorial content.</span>
+                </article>
+                <article class="campaign-card">
+                  <strong>Photography</strong>
+                  <span>Future photo essays, film stills and campaign details.</span>
+                </article>
               </div>
             </section>
 
             <div class="info-stack">
-              <section class="info-card">
-                <h2>What to Expect</h2>
+              <section class="info-card" aria-label="Event details">
                 <ul class="spec-list">
                   <li><span class="spec-label">Music</span><span class="spec-value">Curated DJ Sets</span></li>
                   <li><span class="spec-label">Time</span><span class="spec-value">4PM — Sunset</span></li>
-                  <li><span class="spec-label">Dress</span><span class="spec-value">BLANC</span></li>
+                  <li><span class="spec-label">Dress Code</span><span class="spec-value">BLANC</span></li>
                   <li><span class="spec-label">Bar</span><span class="spec-value">BYOB</span></li>
                 </ul>
               </section>
@@ -468,22 +697,21 @@
               <section class="info-card">
                 <h2>Reservations</h2>
                 <ul class="price-list">
-                  <li><span class="price-label">Community — £8</span></li>
-                  <li><span class="price-label">Guest — £12</span></li>
+                  <li><span class="price-label">Community</span><span class="price-value">£8</span></li>
+                  <li><span class="price-label">Guest</span><span class="price-value">£12</span></li>
                 </ul>
-                <p class="reservation-note">Reservations are reviewed individually.</p>
-                <p class="reservation-note">Your reservation is confirmed once payment has been received.</p>
+                <p class="reservation-note">Reservations are reviewed individually.<br>Your reservation is confirmed once payment has been received.</p>
               </section>
             </div>
           </div>
-        </article>
+        </section>
 
         <aside class="panel form-panel">
-          <h2>Reserve Your Place</h2>
+          <h2>Invitation Request</h2>
           <form method="post" action="#" data-invitation-form>
             <div class="field">
               <label for="fullName">Full Name</label>
-              <input id="fullName" name="fullName" autocomplete="name" required>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required>
             </div>
 
             <div class="field">
@@ -493,33 +721,47 @@
 
             <div class="field">
               <label for="instagram">Instagram</label>
-              <input id="instagram" name="instagram" required>
+              <input id="instagram" name="instagram" type="text" autocomplete="off" required>
             </div>
 
             <div class="field">
               <label for="communityStatus">Community Member?</label>
               <select id="communityStatus" name="communityStatus" data-community-status required>
+                <option value="No" selected>No</option>
                 <option value="Yes">Yes</option>
-                <option value="No">No</option>
               </select>
             </div>
 
-            <div class="field" data-visible="false">
-              <label for="invitedBy">If no, invited by?</label>
-              <input id="invitedBy" name="invitedBy" data-invited-by>
+            <div class="field" data-visible="true">
+              <label for="invitedBy">If no, who invited you?</label>
+              <input id="invitedBy" name="invitedBy" type="text" data-invited-by autocomplete="off">
             </div>
 
             <div class="field">
-              <label for="futureArtist">Future artist suggestion</label>
+              <label for="futureArtist">What would you love to hear at a future &quot;KITCHEN ISLAND&quot; event?</label>
               <textarea id="futureArtist" name="futureArtist"></textarea>
             </div>
 
             <button type="submit">Request an Invitation</button>
-            <p class="form-status" data-form-status></p>
+            <p class="form-status" data-form-status data-visible="false" aria-live="polite"></p>
           </form>
         </aside>
-      </section>
+      </div>
     </main>
+
+    <div class="modal" data-confirmation-modal hidden>
+      <div class="modal-card">
+        <h3>Reservation Received</h3>
+        <div class="modal-copy">
+          <p>Thank you.</p><p>Your reservation has been submitted for review.</p><p>If approved, you'll receive an email containing your payment link.</p><p>Your reservation is only confirmed once payment has been received.</p>
+          <span data-confirmation-reservation></span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" data-close-confirmation>Close</button>
+        </div>
+      </div>
+    </div>
+
     
     <script>
       const apiBaseUrl = "http://localhost:3000";
@@ -528,6 +770,9 @@
       const communityField = document.querySelector("[data-community-status]");
       const invitedByField = document.querySelector("[data-invited-by]");
       const statusBox = document.querySelector("[data-form-status]");
+      const confirmationModal = document.querySelector("[data-confirmation-modal]");
+      const confirmationReservation = document.querySelector("[data-confirmation-reservation]");
+      const closeButton = document.querySelector("[data-close-confirmation]");
 
       const syncConditionalState = () => {
         const needsInvite = communityField.value === "No";
@@ -535,17 +780,40 @@
         invitedByField.closest(".field").dataset.visible = needsInvite ? "true" : "false";
       };
 
+      const setStatus = (message = "") => {
+        statusBox.textContent = message;
+        statusBox.dataset.visible = message ? "true" : "false";
+      };
+
+      const showConfirmation = (reservationId) => {
+        if (confirmationReservation) {
+          confirmationReservation.textContent = reservationId ? "Reference " + reservationId : "";
+        }
+        if (confirmationModal) {
+          confirmationModal.hidden = false;
+          document.body.dataset.modalOpen = "true";
+        }
+      };
+
+      const hideConfirmation = () => {
+        if (confirmationModal) {
+          confirmationModal.hidden = true;
+          document.body.dataset.modalOpen = "false";
+        }
+      };
+
       syncConditionalState();
+      setStatus("");
       communityField.addEventListener("change", syncConditionalState);
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (!apiBaseUrl) {
-          statusBox.textContent = "Submissions are temporarily unavailable during review.";
+          setStatus("Submissions are temporarily unavailable during review.");
           return;
         }
 
-        statusBox.textContent = "Submitting...";
+        setStatus("Submitting...");
 
         const formData = new FormData(form);
         const payload = {
@@ -571,21 +839,27 @@
             throw new Error(data.error || "Request failed");
           }
 
-          const reservationId = data.reservation?.id || "";
-          window.location.href = `${confirmationPath}?reservationId=${encodeURIComponent(reservationId)}`;
+          form.reset();
+          communityField.value = "No";
+          syncConditionalState();
+          setStatus("");
+          showConfirmation(data.reservation?.id || "");
         } catch (error) {
-          statusBox.textContent = error.message || "Something went wrong. Please try again.";
+          setStatus(error.message || "Something went wrong. Please try again.");
         }
       });
 
-      const closeButton = document.querySelector("[data-close-confirmation]");
       if (closeButton) {
         closeButton.addEventListener("click", () => {
+          hideConfirmation();
+          if (apiBaseUrl) {
+            return;
+          }
           if (window.history.length > 1) {
             window.history.back();
             return;
           }
-          window.close();
+          window.location.href = confirmationPath.replace(/\/request-received\/?$/, "/");
         });
       }
     </script>
