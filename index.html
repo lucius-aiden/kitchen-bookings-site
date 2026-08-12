@@ -87,13 +87,15 @@
         margin: 0;
       }
 
-      .brand-mark {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(1.8rem, 4vw, 2.35rem);
-        font-weight: 600;
-        line-height: 0.95;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .brand-lockup {
+        display: grid;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: min(100%, 360px);
+        height: auto;
+        display: block;
       }
 
       .est {
@@ -172,13 +174,12 @@
       .campaign-stage {
         margin: 18px;
         border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background:
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 30%),
-          linear-gradient(140deg, #836f60 0%, #49362b 45%, #211712 100%);
-        min-height: 470px;
+        min-height: 540px;
         position: relative;
         overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(24, 17, 12, 0.14), rgba(24, 17, 12, 0.58)),
+          url("/assets/kitchen-island-campaign-cover.jpg") center 32% / cover no-repeat;
       }
 
       .campaign-stage::before {
@@ -186,24 +187,16 @@
         position: absolute;
         inset: 22px;
         border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .campaign-stage::after {
-        content: "";
-        position: absolute;
-        inset: auto -50px 48px auto;
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 68%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
       }
 
       .campaign-copy {
         position: absolute;
         left: 28px;
+        right: 28px;
         bottom: 28px;
-        max-width: 24ch;
+        display: grid;
+        gap: 14px;
         color: #f7eee5;
       }
 
@@ -218,50 +211,13 @@
       }
 
       .campaign-note {
-        margin-top: 14px;
         color: rgba(247, 238, 229, 0.82);
         line-height: 1.75;
       }
 
-      .campaign-assets {
-        position: absolute;
-        top: 28px;
-        right: 28px;
-        display: grid;
-        gap: 10px;
-        width: min(220px, 40%);
-      }
-
-      .campaign-asset {
-        border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        background: rgba(255, 255, 255, 0.08);
-        padding: 14px 16px;
-        backdrop-filter: blur(10px);
-      }
-
-      .campaign-asset strong,
-      .campaign-asset span {
-        display: block;
-      }
-
-      .campaign-asset strong {
-        font-size: 0.72rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(255, 244, 235, 0.9);
-      }
-
-      .campaign-asset span {
-        margin-top: 8px;
-        color: rgba(255, 244, 235, 0.7);
-        line-height: 1.55;
-        font-size: 0.86rem;
-      }
-
       .campaign-rail {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
         padding: 0 18px 18px;
       }
@@ -270,10 +226,30 @@
         border-radius: 18px;
         border: 1px solid var(--line);
         background: linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0.22));
-        padding: 16px;
-        min-height: 120px;
+        min-height: 148px;
+        display: grid;
+        overflow: hidden;
+      }
+
+      .campaign-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .campaign-card-copy {
         display: grid;
         align-content: end;
+        gap: 8px;
+        padding: 16px;
+      }
+
+      .campaign-card-copy[data-tone="dark"] {
+        background:
+          linear-gradient(180deg, rgba(53, 12, 23, 0.08), rgba(53, 12, 23, 0.38)),
+          url("/assets/kitchen-island-menu-page-2.jpg") center / cover no-repeat;
+        color: #fff8f3;
       }
 
       .campaign-card strong,
@@ -288,10 +264,14 @@
       }
 
       .campaign-card span {
-        margin-top: 8px;
         color: var(--muted);
         line-height: 1.65;
         font-size: 0.88rem;
+      }
+
+      .campaign-card-copy[data-tone="dark"] span,
+      .campaign-card-copy[data-tone="dark"] strong {
+        color: #fff8f3;
       }
 
       .info-stack {
@@ -569,17 +549,6 @@
           grid-template-columns: 1fr;
         }
 
-        .campaign-assets {
-          position: static;
-          width: auto;
-          padding: 22px 22px 0;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .campaign-copy {
-          right: 28px;
-        }
-
         .campaign-rail {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -604,9 +573,9 @@
 
         .campaign-stage {
           min-height: 420px;
+          background-position: center 24%;
         }
 
-        .campaign-assets,
         .campaign-rail {
           grid-template-columns: 1fr;
         }
@@ -627,7 +596,9 @@
       <div class="layout">
         <section class="panel story">
           <div class="brand-row">
-            <p class="brand-mark">&quot;KITCHEN ISLAND&quot;</p>
+            <div class="brand-lockup">
+              <img class="brand-logo" src="/assets/kitchen-island-logo.png" alt='&quot;KITCHEN ISLAND&quot; logo'>
+            </div>
             <p class="est">Est. 2024</p>
           </div>
           <h1>SUMMER SERVICE</h1>
@@ -638,48 +609,29 @@
             <section class="campaign-panel" aria-label="Campaign showcase">
               <div class="campaign-header">
                 <p class="campaign-kicker">Campaign Showcase</p>
-                <p class="campaign-caption">Built for cover art, menus and future campaign assets</p>
+                <p class="campaign-caption">Cover art, menus and future campaign assets</p>
               </div>
               <div class="campaign-stage">
-                <div class="campaign-assets">
-                  <div class="campaign-asset">
-                    <strong>Event Cover</strong>
-                    <span>Primary event artwork and campaign stills.</span>
-                  </div>
-                  <div class="campaign-asset">
-                    <strong>Menu Page I</strong>
-                    <span>Food, drinks and hospitality details.</span>
-                  </div>
-                  <div class="campaign-asset">
-                    <strong>Menu Page II</strong>
-                    <span>Secondary menu, notes or future inserts.</span>
-                  </div>
-                  <div class="campaign-asset">
-                    <strong>Photography</strong>
-                    <span>Editorial imagery and event atmosphere.</span>
-                  </div>
-                </div>
                 <div class="campaign-copy">
                   <p class="campaign-title">SUMMER SERVICE</p>
-                  <p class="campaign-note">A reusable showcase frame for each future &quot;KITCHEN ISLAND&quot; campaign.</p>
+                  <p class="campaign-note">A permanent campaign frame for future &quot;KITCHEN ISLAND&quot; covers, menus, photography and event artwork.</p>
                 </div>
               </div>
               <div class="campaign-rail">
                 <article class="campaign-card">
-                  <strong>Event Cover</strong>
-                  <span>Hero artwork and primary event identity.</span>
+                  <img src="/assets/kitchen-island-campaign-cover.jpg" alt="Summer Service campaign cover">
                 </article>
                 <article class="campaign-card">
-                  <strong>Menu Page I</strong>
-                  <span>Course, drinks or service presentation.</span>
+                  <div class="campaign-card-copy" data-tone="dark">
+                    <strong>Menu Page II</strong>
+                    <span>Current placeholder menu artwork while the second page is being finalised.</span>
+                  </div>
                 </article>
                 <article class="campaign-card">
-                  <strong>Menu Page II</strong>
-                  <span>Additional menu, timings or editorial content.</span>
-                </article>
-                <article class="campaign-card">
-                  <strong>Photography</strong>
-                  <span>Future photo essays, film stills and campaign details.</span>
+                  <div class="campaign-card-copy">
+                    <strong>Future Campaign Assets</strong>
+                    <span>This slot stays reusable for menu page one, editorial photography, film stills or future event artwork.</span>
+                  </div>
                 </article>
               </div>
             </section>
